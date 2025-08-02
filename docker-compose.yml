@@ -1,0 +1,22 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-client-test
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - CONTAINER_API_BASE_URL=http://api-service:8085
+      - CONTAINER_API_LOGIN=test
+      - CONTAINER_API_PASSWORD=test123
+      - CONTAINER_API_CSRF_TOKEN=test-csrf-token
+    networks:
+      - api-network
+    tty: true
+    stdin_open: true
+
+networks:
+  api-network:
+    driver: bridge
