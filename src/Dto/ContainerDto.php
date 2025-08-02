@@ -4,20 +4,20 @@ namespace winolog\ContainerApiClient\Dto;
 
 class ContainerDto
 {
-    public string $container;
-    public int $container_year;
-    public int $cooler;
-    public int $cooler_model;
-    public int $cooler_year;
-    public int $temp_admission;
-    public int $type;
-    public int $size;
-    public int $special;
-    public int $capacity;
-    public int $tare;
-    public int $price;
-    public int $container_quality_id;
-    public int $terminal_id;
+    public ?string $container = null;
+    public ?int $container_year = null;
+    public ?int $cooler = null;
+    public ?int $cooler_model = null;
+    public ?int $cooler_year = null;
+    public ?int $temp_admission = null;
+    public ?int $type = null;
+    public ?int $size = null;
+    public ?int $special = null;
+    public ?int $capacity = null;
+    public ?int $tare = null;
+    public ?int $price = null;
+    public ?int $container_quality_id = null;
+    public ?int $terminal_id = null;
 
     public function toArray(): array
     {
