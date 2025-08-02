@@ -17,7 +17,7 @@ class ContainerApiClient
 
     public function __construct(?string $tokenStoragePath = null)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../../../');
         $dotenv->load();
 
         $this->apiBaseUrl = $_ENV['CONTAINER_API_BASE_URL'] ?? 'http://localhost:8085';
