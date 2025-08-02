@@ -20,9 +20,9 @@ try {
     ];
 
     foreach ($references as $name => $data) {
-        echo "Справочник {$name}: " . count($data) . " записей\n";
+        echo "Справочник {$name}: " . count($data['data']['items']) . " записей\n";
         if (!empty($data)) {
-            echo "Первая запись: " . json_encode($data[0], JSON_UNESCAPED_UNICODE) . "\n\n";
+            echo "Первая запись: " . json_encode($data['data']['items'], JSON_UNESCAPED_UNICODE) . "\n\n";
         }
     }
 
@@ -32,13 +32,13 @@ try {
     $containerDto = new ContainerDto();
     $containerDto->container = 'TEST' . mt_rand(100000, 999999);
     $containerDto->container_year = 2023;
-    $containerDto->type = $references['container_types'][0]['id'] ?? 1;
-    $containerDto->size = $references['container_sizes'][0]['id'] ?? 1;
-    $containerDto->terminal_id = $references['terminals'][0]['id'] ?? 1;
+    $containerDto->type = $references['container_types']['data']['items'][0]['id'] ?? 1;
+    $containerDto->size = $references['container_sizes']['data']['items'][0]['id'] ?? 1;
+    $containerDto->terminal_id = $references['terminals']['data']['items'][0]['id'] ?? 1;
 
     // Заполните остальные обязательные поля по аналогии
     $containerDto->cooler = 1;
-    $containerDto->cooler_model = $references['cooler_models'][0]['id'] ?? 1;
+    $containerDto->cooler_model = $references['cooler_models']['data']['items'][0]['id'] ?? 1;
     $containerDto->temp_admission = -18;
     $containerDto->capacity = 30000;
     $containerDto->tare = 4000;

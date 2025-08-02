@@ -30,7 +30,7 @@ class ContainerService
         $this->ensureAuthenticated();
 
         try {
-            $response = $this->client->post($this->apiBaseUrl . '/api/containers', [
+            $response = $this->client->post($this->apiBaseUrl . '/containers', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $this->authenticator->getToken(),
                     'Accept' => 'application/json',
@@ -77,7 +77,7 @@ class ContainerService
             }
 
             $response = $this->client->post(
-                $this->apiBaseUrl . "/api/containers/$containerId/photos",
+                $this->apiBaseUrl . "/containers/$containerId/photos",
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->authenticator->getToken(),
