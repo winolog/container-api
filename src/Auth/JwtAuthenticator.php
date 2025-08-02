@@ -57,7 +57,7 @@ class JwtAuthenticator
                 $headers['X-CSRF-TOKEN'] = $this->csrfToken;
             }
 
-            $response = $client->post($this->apiBaseUrl . '/api/token/login', [
+            $response = $client->post($this->apiBaseUrl . '/token/login', [
                 'headers' => $headers,
                 'json' => [
                     'login' => $this->login,
