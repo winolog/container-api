@@ -16,7 +16,9 @@ try {
         'terminals' => $client->references()->getTerminals(),
         'container_sizes' => $client->references()->getContainerSizes(),
         'container_types' => $client->references()->getContainerTypes(),
-        'cooler_models' => $client->references()->getCoolerModels()
+        'cooler_models' => $client->references()->getCoolerModels(),
+        'special' => $client->references()->getSpecials(),
+        'container_quality' => $client->references()->getContainerQualities(),
     ];
 
     foreach ($references as $name => $data) {
@@ -43,10 +45,13 @@ try {
     $containerDto->capacity = 30000;
     $containerDto->tare = 4000;
     $containerDto->price = 150000;
+    $containerDto->cooler_year = 2004;
+    $containerDto->special = $references['special']['data']['items'][0]['id'] ?? 1;
+    $containerDto->container_quality_id = $references['container_quality']['data']['items'][0]['id'] ?? 1;
 
     $createdContainer = $client->containers()->createContainer($containerDto);
     echo "Контейнер создан: " . json_encode($createdContainer, JSON_UNESCAPED_UNICODE) . "\n";
-    $containerId = $createdContainer['id'] ?? null;
+    $containerId = $createdContainer['data']['id'] ?? null;
 
     if ($containerId) {
         echo "\n=== Тестирование загрузки фото ===\n";
